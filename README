@@ -1,0 +1,17 @@
+perror
+=====
+
+A simple tool to convert error number to error string of Linux kernel and Application 
+
+
+
+build for android
+=================
+
+1. copy this foler to Android/extra/
+2. build in android.
+	$ cd Android
+	$ . build/envsetup.sh
+	$ cd extra/perror/
+	$ mm
+3. go Android/out/ to find the target. 
