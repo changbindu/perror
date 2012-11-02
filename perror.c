@@ -13,10 +13,44 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include <errno.h>
+
+
+void list_errs(void)
+{
+	//Todo
+}
 
 /* usage: perror <error> */
 int main(int argc, char **argv)
 {
+	int	err_no = 0;
+	int	c = 0;
+
+	while ((c = getopt (argc, argv, "lh")) != EOF)
+	switch (c) {
+	case 'l':
+		list_errs();
+		return 0;
+	case '?':
+	case 'h':
+	default:
+usage:
+		printf("Usage: perror <errno>\n"
+		       "Options:\n"
+		       "	-l	list all error strings defined\n"
+		       "	-h	this help\n"
+		       "note: errno must be a positive integer\n");
+		return 0;
+	}
+
+	if (optind < argc)
+		err_no = atoi(argv[optind]);
+	else
+		goto usage;
+
+	printf("%d: %s\n", err_no, strerror(err_no));
+
 	return 0;
 }
 
