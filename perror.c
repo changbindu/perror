@@ -18,7 +18,8 @@
 
 void list_errs(void)
 {
-	//Todo
+	
+	printf("Todo: function is not implemented!\n");
 }
 
 /* usage: perror <error> */
@@ -38,7 +39,7 @@ int main(int argc, char **argv)
 usage:
 		printf("Usage: perror <errno>\n"
 		       "Options:\n"
-		       "	-l	list all error strings defined\n"
+		       "	-l	list all defined errors\n"
 		       "	-h	this help\n"
 		       "note: errno must be a positive integer\n");
 		return 0;
@@ -49,6 +50,7 @@ usage:
 	else
 		goto usage;
 
+	err_no = abs(err_no);
 	printf("%d: %s\n", err_no, strerror(err_no));
 
 	return 0;
