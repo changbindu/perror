@@ -15,11 +15,14 @@
 #include <unistd.h>
 #include <errno.h>
 
+#define MAX_ERR_NO 133
 
 void list_errs(void)
 {
-	
-	printf("Todo: function is not implemented!\n");
+	int err_no;
+
+	for (err_no = 0; err_no <= MAX_ERR_NO; err_no++)
+		printf("%d: %s\n", err_no, strerror(err_no));
 }
 
 /* usage: perror <error> */
